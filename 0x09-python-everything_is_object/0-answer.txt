@@ -1,7 +1,2 @@
-Args:
-    obj: The object whose type needs to be printed
-
-Returns:
-    None
-"""
-print(type(obj))
+x = 42
+print(type(x))
