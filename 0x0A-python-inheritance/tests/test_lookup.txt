@@ -1,6 +1,8 @@
-$ cat tests/test_lookup.txt
 """
 This module tests the lookup function.
+
+Prototype: def lookup(obj)
+Returns a list object
 
 >>> class MyClass:
 ...     def __init__(self):
@@ -11,4 +13,5 @@ This module tests the lookup function.
 >>> my_object = MyClass()
 >>> lookup(my_object)
 ['my_attribute', 'my_method']
-"""`
+"""
+
