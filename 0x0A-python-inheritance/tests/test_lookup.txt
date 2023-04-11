@@ -1,0 +1,14 @@
+$ cat tests/test_lookup.txt
+"""
+This module tests the lookup function.
+
+>>> class MyClass:
+...     def __init__(self):
+...         self.my_attribute = 42
+...     def my_method(self):
+...         print("Hello, world!")
+...
+>>> my_object = MyClass()
+>>> lookup(my_object)
+['my_attribute', 'my_method']
+"""`
