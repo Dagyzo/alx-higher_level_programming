@@ -1,0 +1,33 @@
+# Test file for BaseGeometry class
+
+>>> bg = BaseGeometry()
+>>> bg.area()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/path/to/5-base_geometry.py", line X, in area
+    raise Exception("area() is not implemented")
+Exception: area() is not implemented
+
+>>> bg.integer_validator("x", 5)
+None
+
+>>> bg.integer_validator("y", 0)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/path/to/5-base_geometry.py", line X, in integer_validator
+    raise ValueError(name + " must be greater than 0")
+ValueError: y must be greater than 0
+
+>>> bg.integer_validator("z", -5)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/path/to/5-base_geometry.py", line X, in integer_validator
+    raise ValueError(name + " must be greater than 0")
+ValueError: z must be greater than 0
+
+>>> bg.integer_validator("w", "hello")
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/path/to/5-base_geometry.py", line X, in integer_validator
+    raise TypeError(name + " must be an integer")
+TypeError: w must be an integer
