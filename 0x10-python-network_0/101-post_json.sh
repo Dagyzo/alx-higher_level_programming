@@ -1,7 +1,7 @@
 #!/bin/bash
 
-url="http://localhost:5000/endpoint"  # Replace with the appropriate URL
-filename=$1
+url=$1
+filename=$2
 
 # Read the contents of the file into a variable
 file_content=$(cat "$filename")
