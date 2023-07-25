@@ -1,26 +1,27 @@
 #!/usr/bin/node
+const fetch = require('node-fetch');
 
-const request = require('request');
-const url = process.argv[2];
+async function getCompletedTasksCount(apiUrl) {
+    const response = await fetch(apiUrl);
+    const data = await response.json();
+    let userCompletedTasks = {};
 
-request(url, function (err, response, body) {
-  if (err) {
-    console.log(err);
-  } else if (response.statusCode === 200) {
-    const completed = {};
-    const tasks = JSON.parse(body);
-    for (const i in tasks) {
-      const task = tasks[i];
-      if (task.completed === true) {
-        if (completed[task.userId] === undefined) {
-          completed[task.userId] = 1;
-        } else {
-          completed[task.userId]++;
+    data.forEach(task => {
+        if (task.completed) {
+            if (Object.prototype.hasOwnProperty.call(userCompletedTasks, task.userId)) {
+                userCompletedTasks[task.userId]++;
+            } else {
+                userCompletedTasks[task.userId] = 1;
+            }
         }
-      }
+    });
+
+    for (let userId in userCompletedTasks) {
+        if (Object.prototype.hasOwnProperty.call(userCompletedTasks, userId)) {
+            console.log(`User ID ${userId} has completed ${userCompletedTasks[userId]} tasks`);
+        }
     }
-    console.log(completed);
-  } else {
-    console.log('An error occured. Status code: ' + response.statusCode);
-  }
-});
+}
+
+getCompletedTasksCount('https://jsonplaceholder.typicode.com/todos');
+
